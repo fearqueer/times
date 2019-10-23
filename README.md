@@ -1,2 +1,2 @@
 # times
-Time card and paycheck calculator
+Time card and paycheck calculator available at [text link](https://lukabostick.com/times)

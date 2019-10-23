@@ -1,0 +1,115 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>times</title>
+
+<link rel="stylesheet" type="text/css" href="css/times.css">
+<link href="https://fonts.googleapis.com/css?family=Palanquin+Dark&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+
+<script type="text/javascript" src="js/times.js"></script>
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+	    <!-- <img id="settings-icon" src="settings-icon.svg" onclick="showSettings()" /> -->
+	    <div id="settings-icon" onclick="showSettings()"> </div>
+	    <h1>Times</h1>
+
+	    <div id="settings" class="hidden"> <!-- hidden --> 
+	    	<form id="settings-form" onsubmit="return changeSettings()">
+		    	<div class="settings-input">
+		    		<label for="hourlyPayRate">Hourly Pay Rate</label>
+		    		<input type="text" name="hourlyPayRate" id="hourlyPayRate" placeholder="0.00">
+		    	</div>
+		    	<div class="settings-input">
+		    		<label for="percentWithheld">% Withheld</label>
+		    		<input type="text" name="percentWithheld" id="percentWithheld" placeholder="0">
+		    	</div>
+		    	<button id="save-settings" type="submit">Save</button>
+	    	</form>
+	    </div>
+
+	    <form id="times-form" onsubmit="return addHours()" novalidate>
+	    	<div id="clock-times">
+		    	<div class="clock-time">
+		    		<label for="clockIn">Clock-in time</label>
+		    		<input type="text" name="clockIn" id="clockIn" placeholder="8:00" inputmode="numeric" pattern="[\d\.]*" maxlength="5">
+		    	</div>
+		    	<div class="clock-time">
+		    		<label for="clockOut">Clock-out time</label>
+		    		<input type="text" name="clockOut" id="clockOut" placeholder="5:00" inputmode="numeric" pattern="[\d\.]*" maxlength="5">
+		    	</div>
+		    	<p id="time-error" class="error hidden">
+	    			Please enter times from 7:00 to 6:00.<br>
+	    			Time format must include a colon.<br>
+	    			Both clock-in and clock-out times must be completed.
+    			</p>
+	    	</div>
+	    	<div class="form-button">
+	    		<button type="submit">Add times and calculate</button>
+	    	</div>
+	    </form>
+
+	    <div id="display-totals">
+	    	<div>
+	    		<h2>Weekly Hours</h2>
+	    		<p id="week-hours">Your total number of hours for the week will display here after you enter more information.</p>
+	    	</div>
+	    	<div id="display-paycheck">
+	    		<h2>Paycheck</h2>
+	    		<p id="paycheck">To display your paycheck total, enter your hourly pay rate and withholding percentage in <a href="javascript:void(0)" onclick="showSettings()">settings</a>.</p>
+	    	</div>
+
+	    	<div id="time-history">
+				<hr>
+
+	    		<h2>Time History</h2>
+	    		<p id="entered-times">Your time history will display here after you enter more information.</p>
+	    	</div>
+	    </div>
+
+    </div>
+
+    <div id="help" class="overlay-info">
+    	<div class="container">
+   			<a role="button" class="close-info" onclick="showInfo('help');">close</a>
+
+	    	<h2>How to Use</h2>
+			<p>
+				<ul>
+					<li>Enter your clock-in and clock-out times in the entry fields.</li>
+					<li>You can enter a colon (<code>:</code>), period (<code>.</code>), or a comma (<code>,</code>) to separate the hour and minutes of the times.</li>
+					<li>Please note that times should be between 7:00 and 6:00. This limitation will be removed in the next update.</li>
+					<li>Currently, overtime is not calculated, but it is coming soon!</li>
+				</ul>
+			</p>
+		</div>
+    </div>
+
+    <div id="about" class="overlay-info hidden">
+    	<div class="container">
+   			<a role="button" class="close-info" onclick="showInfo('about');">close</a>
+
+	    	<h2>About</h2>
+			<p>More information about this project can be found at <a href="../times-project.html">lukabostick.com</a>.</p>
+		</div>
+    </div>
+
+    <div class="main-link">
+    	<p>
+    		<a href="javascript:void(0)" onclick="showInfo('help');">help</a> &ndash; 
+    		<a href="javascript:void(0)" onclick="showInfo('about')">about</a> &ndash; 
+    		<a href="/">&copy; luka bostick</a>
+    	</p>
+    </div>
+
+    <script type="text/javascript" src="js/end-times.js"></script>
+    
+</body>
+</html>
